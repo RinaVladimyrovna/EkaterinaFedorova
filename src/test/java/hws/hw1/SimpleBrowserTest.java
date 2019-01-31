@@ -1,4 +1,4 @@
-package hw1;
+package hws.hw1;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -14,6 +14,8 @@ import java.util.concurrent.TimeUnit;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
+// TODO Code convention, reformat your code via IDEA
+// Done
 public class SimpleBrowserTest {
 
     private WebDriver driver;
@@ -26,7 +28,7 @@ public class SimpleBrowserTest {
     }
 
     @Test
-    public void  simpleTest() {
+    public void simpleTest() {
 
         //1 - Open test site by URL
 
@@ -65,7 +67,7 @@ public class SimpleBrowserTest {
 
         //7 - there are 4 displayed images on the Index Page
 
-        List<WebElement>  images = new ArrayList(driver.findElements(By.cssSelector("[class='benefit-icon']")));
+        List<WebElement> images = driver.findElements(By.cssSelector("[class='benefit-icon']"));
         assertTrue(images.get(0).isDisplayed());
         assertTrue(images.get(1).isDisplayed());
         assertTrue(images.get(2).isDisplayed());
@@ -73,18 +75,18 @@ public class SimpleBrowserTest {
 
         //8 - there are 4 proper texts on the Index Page under icons
 
-        List<WebElement>  texts = new ArrayList(driver.findElements(By.cssSelector("[class='benefit-txt']")));
+        List<WebElement> texts = driver.findElements(By.cssSelector("[class='benefit-txt']"));
 
-        String firstTextTemplate =  "To include good practices\n" +
-                                    "and ideas from successful\n" +
-                                    "EPAM project";
-        String secondTextTemplate =  "To be flexible and\n" +
-                                     "customizable";
-        String thirdTextTemplate =  "To be multiplatform";
+        String firstTextTemplate = "To include good practices\n" +
+                "and ideas from successful\n" +
+                "EPAM project";
+        String secondTextTemplate = "To be flexible and\n" +
+                "customizable";
+        String thirdTextTemplate = "To be multiplatform";
         String fourthTextTemplate = "Already have good base\n" +
-                                    "(about 20 internal and\n" +
-                                    "some external projects),\n" +
-                                    "wish to get more…";
+                "(about 20 internal and\n" +
+                "some external projects),\n" +
+                "wish to get more…";
         assertEquals(texts.get(0).getText(), firstTextTemplate);
         assertEquals(texts.get(1).getText(), secondTextTemplate);
         assertEquals(texts.get(2).getText(), thirdTextTemplate);
@@ -93,8 +95,8 @@ public class SimpleBrowserTest {
         //9 - Assert a text of the main headers
         WebElement headerText = driver.findElement(By.cssSelector("[class='main-title text-center']"));
         WebElement loremIpsum = driver.findElement(By.cssSelector("[class='main-txt text-center']"));
-        String headerTextTemplate =  "EPAM framework Wishes…";
-        String loremIpsumTemplate =  "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor " +
+        String headerTextTemplate = "EPAM framework Wishes…";
+        String loremIpsumTemplate = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor " +
                 "incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation " +
                 "ullamco laboris nisi ut aliquip ex ea commodo consequat Duis aute irure dolor in reprehenderit in " +
                 "voluptate velit esse cillum dolore eu fugiat nulla pariatur.";

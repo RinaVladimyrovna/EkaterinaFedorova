@@ -1,20 +1,42 @@
-package Lesson_1;
+package lessons.l2;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
 
 /**
  * Created by Rina on 23/01/2019
  */
 
-public class SimpleTest {
+public class SimpleTestWithAnatations2 {
+
+    private WebDriver driver;
+
+    @BeforeClass
+    public void beforeClass() {
+        //setProperty("webdriver.chrome.driver", "src\\main\\")
+    }
+
+    @BeforeMethod
+    public void beforeMethod() {
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().pageLoadTimeout(10000, TimeUnit.MILLISECONDS);
+    }
+
+    @AfterMethod
+    public void afterMethod() {
+        //5
+        driver.close();
+    }
 
     @Test
     public void simpleTest() {
