@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
+// TODO Code convention, reformat your code via IDEA
 public class SimpleBrowserTest {
 
     private WebDriver driver;
@@ -65,7 +66,7 @@ public class SimpleBrowserTest {
 
         //7 - there are 4 displayed images on the Index Page
 
-        List<WebElement>  images = new ArrayList(driver.findElements(By.cssSelector("[class='benefit-icon']")));
+        List<WebElement>  images = driver.findElements(By.cssSelector("[class='benefit-icon']"));
         assertTrue(images.get(0).isDisplayed());
         assertTrue(images.get(1).isDisplayed());
         assertTrue(images.get(2).isDisplayed());
@@ -73,7 +74,7 @@ public class SimpleBrowserTest {
 
         //8 - there are 4 proper texts on the Index Page under icons
 
-        List<WebElement>  texts = new ArrayList(driver.findElements(By.cssSelector("[class='benefit-txt']")));
+        List<WebElement>  texts = driver.findElements(By.cssSelector("[class='benefit-txt']"));
 
         String firstTextTemplate =  "To include good practices\n" +
                                     "and ideas from successful\n" +
