@@ -2,18 +2,18 @@
 
 <suite name="Regression Suite" verbose="1" parallel="methods" thread-count="3">
 
-    <test name="Regression" >
+    <test name="Regression">
 
         <groups>
             <run>
-                <include name="Regression" />
+                <include name="Regression"/>
             </run>
         </groups>
 
         <classes>
-            <class name="hws.hw2.ex2.OneSmokeTestAndTwoRegressionTests" />
-            <class name="hws.hw2.ex2.RegressionTests" />
-            <class name="hws.hw2.ex2.SmokeAndRegressionTests" />
+            <class name="hws.hw2.ex2.OneSmokeTestAndTwoRegressionTests"/>
+            <class name="hws.hw2.ex2.RegressionTests"/>
+            <class name="hws.hw2.ex2.SmokeAndRegressionTests"/>
         </classes>
 
     </test>
