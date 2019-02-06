@@ -13,13 +13,10 @@ import java.util.List;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
+// TODO PO should be named with reference to the page
 public class SimplePageObject {
 
     private WebDriver driver;
-
-    public SimplePageObject(WebDriver webDriver) {
-        this.driver = webDriver;
-    }
 
     @FindBy(css = "[id='user-icon']")
     private WebElement loggingIcon;
@@ -75,6 +72,10 @@ public class SimplePageObject {
     @FindBy(css = "[class='footer-content overflow']")
     private WebElement footer;
 
+    public SimplePageObject(WebDriver webDriver) {
+        this.driver = webDriver;
+    }
+
     public void openJdiPage(MainPage link) {
         driver.navigate().to(link.toString());
     }
@@ -95,7 +96,6 @@ public class SimplePageObject {
     }
 
     public void verifyHeaderSectionItems(NavigationPanel navigation) {
-
         assertEquals(homeOption.getText(), navigation.home);
         assertEquals(contactsOption.getText(), navigation.contact);
         assertEquals(serviceOption.getText(), navigation.service);
@@ -109,6 +109,7 @@ public class SimplePageObject {
     }
 
     public void verifyImageTexts(MainPage text1, MainPage text2, MainPage text3, MainPage text4) {
+        // TODO This will be better with for loop
         assertEquals(texts.get(0).getText(), text1.toString());
         assertEquals(texts.get(1).getText(), text2.toString());
         assertEquals(texts.get(2).getText(), text3.toString());

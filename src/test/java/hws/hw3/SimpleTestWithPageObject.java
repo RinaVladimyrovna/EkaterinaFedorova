@@ -13,6 +13,7 @@ import static hws.hw3.ENUMs.MainPage.*;
 import static hws.hw3.ENUMs.NavigationPanel.NAVIGATION;
 
 public class SimpleTestWithPageObject {
+    // TODO This is NOT the browser
     private SimplePageObject browser;
 
     @BeforeMethod
@@ -47,6 +48,8 @@ public class SimpleTestWithPageObject {
         //7 - there are 4 displayed images on the Index Page
         browser.verifyDisplayedImages();
 
+        // TODO You can separate one big enum to several pieces.
+        // TODO Take a look on enum default methods, you can take the whole data at once.
         //8 - there are 4 proper texts on the Index Page under icons
         browser.verifyImageTexts(ICON_TEXT_1, ICON_TEXT_2, ICON_TEXT_3, ICON_TEXT_4);
 
@@ -54,6 +57,7 @@ public class SimpleTestWithPageObject {
         browser.verifyHeaderTexts(MAIN_HEADER_TEXT, LOREM_IPSUM_TEXT);
 
         //10 - The iframe exists
+        // TODO Method within assertion should have prefix check/verify or similar.
         browser.iFrame();
 
         //11 - there is Epam logo in the left top conner of iframe
