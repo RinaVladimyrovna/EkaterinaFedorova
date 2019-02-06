@@ -1,4 +1,5 @@
 .idea
 # TODO This wont work, you have to ignore all iml files
-Autotest project.iml
+# Done
+*.iml
 target
