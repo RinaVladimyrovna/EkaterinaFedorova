@@ -10,6 +10,7 @@
             </run>
         </groups>
 
+        <!--TODO Basically, you can specify the package here-->
         <classes>
             <class name="hws.hw2.ex2.OneSmokeTestAndTwoRegressionTests"/>
             <class name="hws.hw2.ex2.RegressionTests"/>
