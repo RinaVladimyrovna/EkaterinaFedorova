@@ -11,11 +11,11 @@
         </groups>
 
         <!--TODO Basically, you can specify the package here-->
-        <classes>
-            <class name="hws.hw2.ex2.OneSmokeTestAndTwoRegressionTests"/>
-            <class name="hws.hw2.ex2.RegressionTests"/>
-            <class name="hws.hw2.ex2.SmokeAndRegressionTests"/>
-        </classes>
+        <!--Of course, but I'll leave another .xml with classes to see the difference-->
+        <!--It gives more information with classes. And there are few enough classes in our ex to list them-->
+        <packages>
+            <package name="hws.hw2.ex2"/>
+        </packages>
 
     </test>
 
