@@ -12,73 +12,77 @@ import java.util.concurrent.TimeUnit;
 import static hws.hw3.ENUMs.MainPage.*;
 import static hws.hw3.ENUMs.NavigationPanel.NAVIGATION;
 
-public class SimpleTestWithPageObject {
+public class JdiIndexPageSeleniumTestWithPageObject {
     // TODO This is NOT the browser
-    private SimplePageObject browser;
+    // Done. Changed to JdiIndexPage.
+    private JdiIndexPage JdiIndexPage;
 
     @BeforeMethod
     public void beforeMethod() {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(10000, TimeUnit.MILLISECONDS);
-        browser = PageFactory.initElements(driver, SimplePageObject.class);
+        JdiIndexPage = PageFactory.initElements(driver, JdiIndexPage.class);
     }
 
     @Test
     public void simpleTest() {
 
         //1 - Open test site by URL
-        browser.openJdiPage(JDI_PAGE_URL);
+        JdiIndexPage.openJdiPage(JDI_PAGE_URL);
 
         //2 - Assert Browser title
-        browser.verifyPageTitle(MAIN_PAGE_TITLE);
+        JdiIndexPage.verifyPageTitle(MAIN_PAGE_TITLE);
 
         //3 - Perform login
-        browser.logIn(LoggingIn.USER);
+        JdiIndexPage.logIn(LoggingIn.USER);
 
         // 4 - Assert User name
-        browser.verifyUserName(LoggingIn.USER);
+        JdiIndexPage.verifyUserName(LoggingIn.USER);
 
         //5 - Assert Browser title
-        browser.verifyPageTitle(MAIN_PAGE_TITLE);
+        JdiIndexPage.verifyPageTitle(MAIN_PAGE_TITLE);
 
         //6 - there are 4 items on the header section
-        browser.verifyHeaderSectionItems(NAVIGATION);
+        JdiIndexPage.verifyHeaderSectionItems(NAVIGATION);
 
         //7 - there are 4 displayed images on the Index Page
-        browser.verifyDisplayedImages();
+        JdiIndexPage.verifyDisplayedImages();
 
         // TODO You can separate one big enum to several pieces.
         // TODO Take a look on enum default methods, you can take the whole data at once.
+        // Done. Idea suggested to make enum class reference within the method.
+        // Sounded good enough.
         //8 - there are 4 proper texts on the Index Page under icons
-        browser.verifyImageTexts(ICON_TEXT_1, ICON_TEXT_2, ICON_TEXT_3, ICON_TEXT_4);
+        JdiIndexPage.verifyImageTexts();
 
         //9 - Assert a text of the main headers
-        browser.verifyHeaderTexts(MAIN_HEADER_TEXT, LOREM_IPSUM_TEXT);
+        JdiIndexPage.verifyHeaderTexts(MAIN_HEADER_TEXT, LOREM_IPSUM_TEXT);
 
         //10 - The iframe exists
         // TODO Method within assertion should have prefix check/verify or similar.
-        browser.iFrame();
+        // Done.
+        JdiIndexPage.verifyIframePresence();
 
         //11 - there is Epam logo in the left top conner of iframe
-        browser.iFrameLogo();
+        JdiIndexPage.verifyIframeLogoIsDisplayed();
 
         //12 - Switch to original window back
-        browser.mainScreen();
+        JdiIndexPage.switchToMainScreen();
 
         //13 - Assert a text of the sub header
-        browser.subHeaderText(SUB_HEADER_TEXT);
+        JdiIndexPage.verifySubHeaderText(SUB_HEADER_TEXT);
 
         //14 - JDI GITHUB is a link and has a proper URL
-        browser.verifyLink(LINK_URL);
+        JdiIndexPage.verifyLink(LINK_URL);
 
         //15 - there is Left Section
-        browser.verifyLeftSection();
+        JdiIndexPage.verifyLeftSection();
 
         //16 - Assert that there is Footer
-        browser.verifyFooter();
+        JdiIndexPage.verifyFooter();
 
-        //17 - close browser
-        browser.close();
+        //17 - close JdiIndexPage
+        JdiIndexPage.close();
     }
 }

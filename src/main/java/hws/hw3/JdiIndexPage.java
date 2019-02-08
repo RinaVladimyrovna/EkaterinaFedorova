@@ -1,5 +1,6 @@
 package hws.hw3;
 
+import hws.hw3.ENUMs.BelowIconTexts;
 import hws.hw3.ENUMs.LoggingIn;
 import hws.hw3.ENUMs.MainPage;
 import hws.hw3.ENUMs.NavigationPanel;
@@ -14,7 +15,8 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 // TODO PO should be named with reference to the page
-public class SimplePageObject {
+// Done.
+public class JdiIndexPage {
 
     private WebDriver driver;
 
@@ -72,7 +74,7 @@ public class SimplePageObject {
     @FindBy(css = "[class='footer-content overflow']")
     private WebElement footer;
 
-    public SimplePageObject(WebDriver webDriver) {
+    public JdiIndexPage(WebDriver webDriver) {
         this.driver = webDriver;
     }
 
@@ -108,12 +110,14 @@ public class SimplePageObject {
         }
     }
 
-    public void verifyImageTexts(MainPage text1, MainPage text2, MainPage text3, MainPage text4) {
+    public void verifyImageTexts() {
         // TODO This will be better with for loop
-        assertEquals(texts.get(0).getText(), text1.toString());
-        assertEquals(texts.get(1).getText(), text2.toString());
-        assertEquals(texts.get(2).getText(), text3.toString());
-        assertEquals(texts.get(3).getText(), text4.toString());
+        // Done. Idea suggested to make enum class reference within the method.
+        // Sounded good enough.
+        int index = 0;
+        for (BelowIconTexts icon : BelowIconTexts.values()) {
+            assertEquals(texts.get(index++).getText(), icon.toString());
+        }
     }
 
     public void verifyHeaderTexts(MainPage mainHeaderText, MainPage loremIpsumText) {
@@ -121,20 +125,20 @@ public class SimplePageObject {
         assertEquals(loremText.getText(), loremIpsumText.toString());
     }
 
-    public void iFrame() {
+    public void verifyIframePresence() {
         assertTrue(iFrame.isDisplayed());
     }
 
-    public void iFrameLogo() {
+    public void verifyIframeLogoIsDisplayed() {
         WebDriver iframe = driver.switchTo().frame(iFrame);
         assertTrue(iframe.findElement(By.cssSelector("[id='epam_logo']")).isDisplayed());
     }
 
-    public void mainScreen() {
+    public void switchToMainScreen() {
         driver.switchTo().defaultContent();
     }
 
-    public void subHeaderText(MainPage text) {
+    public void verifySubHeaderText(MainPage text) {
         assertEquals(link.getText(), text.toString());
     }
 
