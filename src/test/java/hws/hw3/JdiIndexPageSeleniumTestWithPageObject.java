@@ -82,7 +82,7 @@ public class JdiIndexPageSeleniumTestWithPageObject {
         //16 - Assert that there is Footer
         JdiIndexPage.verifyFooter();
 
-        //17 - close JdiIndexPage
+        //17 - close browser
         JdiIndexPage.close();
     }
 }
