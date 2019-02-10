@@ -1,4 +1,4 @@
-package hws.hw4;
+package lessons.l4;
 
 
 import Base.SelenideBase;
