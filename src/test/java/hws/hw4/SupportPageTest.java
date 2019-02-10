@@ -1,10 +1,10 @@
 package hws.hw4;
 
 import Base.SelenideBase;
-import com.codeborne.selenide.Selenide;
 import hws.hw4.ENUMs.CheckboxsList;
 import hws.hw4.ENUMs.MainPage;
 import hws.hw4.ENUMs.Metals;
+import hws.hw4.ENUMs.ServiceListOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -14,23 +14,25 @@ import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
 import static hws.hw4.ENUMs.RightSectionLogs.*;
 
-public class SelenideSimpleTestWithPO extends SelenideBase {
+public class SupportPageTest extends SelenideBase {
     private SelenideIndexPage JdiIndexPage;
+    private SelenideSupportPage JdiSupportPage;
 
     @BeforeMethod
-    public void initTest(){
+    public void initTest() {
         // 1 - open JDI home page
         open(MainPage.JDI_PAGE_URL.toString());
         JdiIndexPage = page(SelenideIndexPage.class);
+        JdiSupportPage = page(SelenideSupportPage.class);
     }
 
     @AfterMethod
-    public void closeTab(){
+    public void closeTab() {
         close();
     }
 
     @Test
-    public void SimpleTest(){
+    public void SimpleTest() {
         // 2 - check tab title
         JdiIndexPage.verifyPageTitle();
 
@@ -49,39 +51,39 @@ public class SelenideSimpleTestWithPO extends SelenideBase {
         JdiIndexPage.verifyDisplayedItems2();
 
         // 7 - Navigate to Different Elements Page
-        JdiIndexPage.openDifferentElementsPage();
+        JdiIndexPage.openDifferentPage(ServiceListOptions.ITEM_7.toString());
 
         // 8 - Different elements page contains all needed elements
-        JdiIndexPage.verifyPageElements(4, 4, 2);
+        JdiSupportPage.verifyPageElements(4, 4, 2);
 
         // 9 - verify Right Section Presence
-        JdiIndexPage.verifyRightSectionPresence();
+        JdiSupportPage.verifyRightSectionPresence();
 
         // 10 - verify Left Section Presence
-        JdiIndexPage.verifyLeftSectionPresence();
+        JdiSupportPage.verifyLeftSectionPresence();
 
         // 11 - check checkboxs
-        JdiIndexPage.selectCheckboxs(CheckboxsList.WATER.toString(), CheckboxsList.WIND.toString());
+        JdiSupportPage.selectCheckboxs(CheckboxsList.WATER.toString(), CheckboxsList.WIND.toString());
 
         //12 - verify logs
-        JdiIndexPage.verifyLogs(WATER_TRUE_LOG.toString(), WIND_TRUE_LOG.toString());
+        JdiSupportPage.verifyLogs(WATER_TRUE_LOG.toString(), WIND_TRUE_LOG.toString());
 
         // 13 - Select radio button
-        JdiIndexPage.selectRadioButtons(Metals.SELEN.toString());
+        JdiSupportPage.selectRadioButtons(Metals.SELEN.toString());
 
         // 14 - verify logs
-        JdiIndexPage.verifyLogs(SELEN_LOG.toString());
+        JdiSupportPage.verifyLogs(SELEN_LOG.toString());
 
         // 15 - change colour
-        JdiIndexPage.selectColor();
+        JdiSupportPage.selectColor();
 
         // 16 - verify logs
-        JdiIndexPage.verifyLogs(YELLOW_LOG.toString());
+        JdiSupportPage.verifyLogs(YELLOW_LOG.toString());
 
         // 17 - unselect checkboxs
-        JdiIndexPage.deselectCheckboxs(CheckboxsList.WATER.toString(), CheckboxsList.WIND.toString());
+        JdiSupportPage.deselectCheckboxs(CheckboxsList.WATER.toString(), CheckboxsList.WIND.toString());
 
         //18 - verify logs
-        JdiIndexPage.verifyLogs(WATER_FALSE_LOG.toString(), WIND_FALSE_LOG.toString());
+        JdiSupportPage.verifyLogs(WATER_FALSE_LOG.toString(), WIND_FALSE_LOG.toString());
     }
 }
