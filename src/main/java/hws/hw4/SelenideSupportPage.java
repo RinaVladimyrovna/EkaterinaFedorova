@@ -45,6 +45,7 @@ public class SelenideSupportPage {
         }
     }
 
+    // TODO It is not really necessary to parametrise this one
     public void verifyPageElements(int boxNumber, int radioNumber, int buttonNumber) {
         assertEquals(checkboxs.size(), boxNumber);
         assertEquals(radioButtons.size(), radioNumber);
@@ -62,8 +63,12 @@ public class SelenideSupportPage {
         leftSection.shouldBe(visible);
     }
 
+    // TODO Most all of this methods should be parametrised by enum instead of String.
     public void selectCheckboxs(String... boxes) {
         for (String box : boxes) {
+            // TODO Nice attempt, but you have to use Selenide approach
+            // TODO Take a look on ElementsCollection and method that allow you to do the variety of cool stuff
+            // TODO Basically, you should not find elements in the OP method, use @FindBy
             checkboxs.findBy(text(box)).click();
         }
     }
@@ -88,6 +93,7 @@ public class SelenideSupportPage {
         }
     }
 
+    // TODO Parameter ?
     public void selectColor() {
         colorList.click();
         colorList.$(Selectors.byText(Colors.YELLOW.toString())).click();

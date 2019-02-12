@@ -1,6 +1,4 @@
 .idea
-# TODO This wont work, you have to ignore all iml files
-# Done
 *.iml
 target
 /build

@@ -1,7 +1,7 @@
 package hws.hw3;
 
 import hws.hw3.ENUMs.BelowIconTexts;
-import hws.hw3.ENUMs.LoggingIn;
+import hws.hw3.ENUMs.Users;
 import hws.hw3.ENUMs.MainPage;
 import hws.hw3.ENUMs.NavigationPanel;
 import org.openqa.selenium.By;
@@ -14,8 +14,6 @@ import java.util.List;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-// TODO PO should be named with reference to the page
-// Done.
 public class JdiIndexPage {
 
     private WebDriver driver;
@@ -86,14 +84,14 @@ public class JdiIndexPage {
         assertEquals(driver.getTitle(), title.toString());
     }
 
-    public void logIn(LoggingIn credentials) {
+    public void logIn(Users credentials) {
         loggingIcon.click();
         accountNameField.sendKeys(credentials.login);
         passwordNameField.sendKeys(credentials.password);
         loggingButton.click();
     }
 
-    public void verifyUserName(LoggingIn credentials) {
+    public void verifyUserName(Users credentials) {
         assertEquals(userNameField.getText(), credentials.name);
     }
 
@@ -111,9 +109,6 @@ public class JdiIndexPage {
     }
 
     public void verifyImageTexts() {
-        // TODO This will be better with for loop
-        // Done. Idea suggested to make enum class reference within the method.
-        // Sounded good enough.
         int index = 0;
         for (BelowIconTexts icon : BelowIconTexts.values()) {
             assertEquals(texts.get(index++).getText(), icon.toString());
