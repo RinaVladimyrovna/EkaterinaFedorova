@@ -3,6 +3,7 @@ package hws.hw4;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import hws.hw4.ENUMs.Sliders;
 import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Condition.*;
@@ -18,12 +19,12 @@ public class SelenideDatesPage {
     @FindBy(css = "[class^='uui-slider']")
     private SelenideElement sliderRange;
 
-    public void moveASlider(String sliderIndex, String destination) {
+    public void moveASlider(Sliders sliderIndex, int destination) {
 
-        SelenideElement tip = sliders.get(Integer.valueOf(sliderIndex));
+        SelenideElement tip = sliders.get(Integer.valueOf(sliderIndex.toString()));
         int currentState = Integer.valueOf(tip.$("span").getText());
         float rangeSize = sliderRange.getSize().width / 100.0F;
-        int endPosition = Integer.valueOf(destination);
+        int endPosition = destination;
 
         //Just to avoid log problem regarding overlapping elements.
         //A bad way, I agree.
@@ -40,8 +41,8 @@ public class SelenideDatesPage {
         while (currentState != endPosition);
     }
 
-    public void verifyLogs(String destination) {
-        logs.findBy(text(destination)).shouldBe(visible);
+    public void verifyLogs(int destination) {
+        logs.findBy(text(Integer.toString(destination))).shouldBe(visible);
     }
 
 }

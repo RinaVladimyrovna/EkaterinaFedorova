@@ -2,19 +2,11 @@ package hws.hw4;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selectors;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import hws.hw4.ENUMs.Colors;
-import hws.hw4.ENUMs.LoggingIn;
-import hws.hw4.ENUMs.MainPage;
-import hws.hw4.ENUMs.ServiceListOptions;
+import hws.hw4.ENUMs.*;
 import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static hws.hw4.ENUMs.ServiceListOptions.values;
-import static org.testng.Assert.assertEquals;
 
 public class SelenideSupportPage {
 
@@ -46,10 +38,11 @@ public class SelenideSupportPage {
     }
 
     // TODO It is not really necessary to parametrise this one
-    public void verifyPageElements(int boxNumber, int radioNumber, int buttonNumber) {
-        assertEquals(checkboxs.size(), boxNumber);
-        assertEquals(radioButtons.size(), radioNumber);
-        assertEquals(buttons.size(), buttonNumber);
+    // Done. Just a thought to re use it for another pages with different elements number
+    public void verifyPageElements() {
+        checkboxs.shouldHaveSize(4);
+        radioButtons.shouldHaveSize(4);
+        buttons.shouldHaveSize(2);
         checkVisibilityOfAllElements(checkboxs);
         checkVisibilityOfAllElements(radioButtons);
         checkVisibilityOfAllElements(buttons);
@@ -64,42 +57,40 @@ public class SelenideSupportPage {
     }
 
     // TODO Most all of this methods should be parametrised by enum instead of String.
-    public void selectCheckboxs(String... boxes) {
-        for (String box : boxes) {
+    // Done
+    public void selectCheckboxs(CheckboxsList... boxes) {
+        for (CheckboxsList box : boxes) {
             // TODO Nice attempt, but you have to use Selenide approach
             // TODO Take a look on ElementsCollection and method that allow you to do the variety of cool stuff
             // TODO Basically, you should not find elements in the OP method, use @FindBy
-            checkboxs.findBy(text(box)).click();
+            checkboxs.findBy(text(box.toString())).click();
         }
     }
 
-    public void verifyLogs(String... logs) {
-        for (String log : logs) {
-            rightSectionLogs.findBy(text(log)).shouldBe(visible);
-            //.shouldHave(text(log)); probably
+    public void verifyLogs(RightSectionLogs... logs) {
+        for (RightSectionLogs log : logs) {
+            rightSectionLogs.findBy(text(log.toString())).shouldBe(visible);
         }
     }
 
-    public void selectRadioButtons(String... buttons) {
-        for (String button : buttons) {
-            radioButtons.findBy(text(button)).click();
+    public void selectRadioButtons(Metals... buttons) {
+        for (Metals button : buttons) {
+            radioButtons.findBy(text(button.toString())).click();
         }
     }
 
-    public void deselectCheckboxs(String... boxes) {
+    public void deselectCheckboxs(CheckboxsList... boxes) {
         selectCheckboxs(boxes);
-        for (String box : boxes) {
-            checkboxs.findBy(text(box)).shouldNotBe(checked);
+        for (CheckboxsList box : boxes) {
+            checkboxs.findBy(text(box.toString())).shouldNotBe(checked);
         }
     }
 
     // TODO Parameter ?
-    public void selectColor() {
+    // Done
+    public void selectColor(Colors color) {
         colorList.click();
-        colorList.$(Selectors.byText(Colors.YELLOW.toString())).click();
+        colorList.$(Selectors.byText(color.toString())).click();
     }
 
-    public void closePage() {
-        Selenide.close();
-    }
 }

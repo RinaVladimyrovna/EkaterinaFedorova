@@ -1,10 +1,9 @@
 package hws.hw4;
 
 import com.codeborne.selenide.*;
-import hws.hw4.ENUMs.LoggingIn;
 import hws.hw4.ENUMs.MainPage;
-import hws.hw4.ENUMs.Colors;
 import hws.hw4.ENUMs.ServiceListOptions;
+import hws.hw4.ENUMs.Users;
 import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Condition.*;
@@ -66,15 +65,15 @@ public class SelenideIndexPage {
         assertEquals(getWebDriver().getTitle(), MainPage.MAIN_PAGE_TITLE.toString());
     }
 
-    public void logIn() {
+    public void logIn(Users user) {
         loggingIcon.click();
-        accountNameField.sendKeys(LoggingIn.USER.login);
-        passwordNameField.sendKeys(LoggingIn.USER.password);
+        accountNameField.sendKeys(user.login);
+        passwordNameField.sendKeys(user.password);
         loggingButton.click();
     }
 
-    public void verifyUserName() {
-        assertEquals(userNameField.getText(), LoggingIn.USER.name);
+    public void verifyUserName(Users user) {
+        userNameField.shouldHave(Condition.text(user.name));
     }
 
     public void expandServiceList() {
@@ -84,7 +83,6 @@ public class SelenideIndexPage {
     public void verifyDisplayedItems() {
         int index = 0;
         for (ServiceListOptions item : values()) {
-            //serviceListItems.get(index++).getText(). item.toString());
             serviceListItems.get(index++).shouldHave(text(item.toString()));
         }
     }
@@ -96,69 +94,15 @@ public class SelenideIndexPage {
     public void verifyDisplayedItems2() {
         int index = 0;
         for (ServiceListOptions item : values()) {
-            //assertEquals(leftServiceListItems.get(index++).getText(), item.toString());
             leftServiceListItems.get(index++).shouldHave(text(item.toString()));
         }
     }
 
     // TODO This method should be parametrised by enum instead of string
-    public void openDifferentPage(String pageName) {
+    // Done
+    public void openDifferentPage(ServiceListOptions pageName) {
         serviceOption.click();
-        serviceListItems.findBy(text(pageName)).click();
-    }
-
-    private void checkVisibilityOfAllElements(ElementsCollection collection) {
-        for (SelenideElement element : collection) {
-            element.shouldBe(visible);
-        }
-    }
-
-    public void verifyPageElements(int boxNumber, int radioNumber, int buttonNumber) {
-        assertEquals(checkboxs.size(), boxNumber);
-        assertEquals(radioButtons.size(), radioNumber);
-        assertEquals(buttons.size(), buttonNumber);
-        checkVisibilityOfAllElements(checkboxs);
-        checkVisibilityOfAllElements(radioButtons);
-        checkVisibilityOfAllElements(buttons);
-    }
-
-    public void verifyRightSectionPresence() {
-        rightSection.shouldBe(visible);
-    }
-
-    public void verifyLeftSectionPresence() {
-        leftSection.shouldBe(visible);
-    }
-
-    public void selectCheckboxs(String... boxes) {
-        for (String box : boxes) {
-            checkboxs.findBy(text(box)).click();
-        }
-    }
-
-    public void verifyLogs(String... logs) {
-        for (String log : logs) {
-            rightSectionLogs.findBy(text(log)).shouldBe(visible);
-            //.shouldHave(text(log)); probably
-        }
-    }
-
-    public void selectRadioButtons(String... buttons) {
-        for (String button : buttons) {
-            radioButtons.findBy(text(button)).click();
-        }
-    }
-
-    public void deselectCheckboxs(String... boxes) {
-        selectCheckboxs(boxes);
-        for (String box : boxes) {
-            checkboxs.findBy(text(box)).shouldNotBe(checked);
-        }
-    }
-
-    public void selectColor() {
-        colorList.click();
-        colorList.$(Selectors.byText(Colors.YELLOW.toString())).click();
+        serviceListItems.findBy(text(pageName.toString())).click();
     }
 
 }

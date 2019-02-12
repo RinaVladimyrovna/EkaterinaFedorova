@@ -1,10 +1,7 @@
 package hws.hw4;
 
 import Base.SelenideBase;
-import hws.hw4.ENUMs.CheckboxsList;
-import hws.hw4.ENUMs.MainPage;
-import hws.hw4.ENUMs.Metals;
-import hws.hw4.ENUMs.ServiceListOptions;
+import hws.hw4.ENUMs.*;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -15,15 +12,15 @@ import static com.codeborne.selenide.Selenide.page;
 import static hws.hw4.ENUMs.RightSectionLogs.*;
 
 public class SupportPageTest extends SelenideBase {
-    private SelenideIndexPage JdiIndexPage;
-    private SelenideSupportPage JdiSupportPage;
+    private SelenideIndexPage jdiIndexPage;
+    private SelenideSupportPage jdiSupportPage;
 
     @BeforeMethod
     public void initTest() {
         // 1 - open JDI home page
         open(MainPage.JDI_PAGE_URL.toString());
-        JdiIndexPage = page(SelenideIndexPage.class);
-        JdiSupportPage = page(SelenideSupportPage.class);
+        jdiIndexPage = page(SelenideIndexPage.class);
+        jdiSupportPage = page(SelenideSupportPage.class);
     }
 
     @AfterMethod
@@ -34,58 +31,60 @@ public class SupportPageTest extends SelenideBase {
     @Test
     public void SimpleTest() {
         // 2 - check tab title
-        JdiIndexPage.verifyPageTitle();
+        jdiIndexPage.verifyPageTitle();
 
         // 3 - log in
         // TODO Parameter ?
-        JdiIndexPage.logIn();
+        // Done
+        jdiIndexPage.logIn(Users.PITER);
 
         // 4 - check user name
         // TODO Parameter ?
-        JdiIndexPage.verifyUserName();
+        // Done
+        jdiIndexPage.verifyUserName(Users.PITER);
 
         // 5 - check "Service" subcategories in the header
-        JdiIndexPage.expandServiceList();
-        JdiIndexPage.verifyDisplayedItems();
+        jdiIndexPage.expandServiceList();
+        jdiIndexPage.verifyDisplayedItems();
 
         // 6 -  Service subcategories in the left section
-        JdiIndexPage.expandLeftServiceList();
-        JdiIndexPage.verifyDisplayedItems2();
+        jdiIndexPage.expandLeftServiceList();
+        jdiIndexPage.verifyDisplayedItems2();
 
         // 7 - Navigate to Different Elements Page
-        JdiIndexPage.openDifferentPage(ServiceListOptions.ITEM_7.toString());
+        jdiIndexPage.openDifferentPage(ServiceListOptions.DIFFERENT_ELEMENTS_PAGE_LINK);
 
         // 8 - Different elements page contains all needed elements
-        JdiSupportPage.verifyPageElements(4, 4, 2);
+        jdiSupportPage.verifyPageElements();
 
         // 9 - verify Right Section Presence
-        JdiSupportPage.verifyRightSectionPresence();
+        jdiSupportPage.verifyRightSectionPresence();
 
         // 10 - verify Left Section Presence
-        JdiSupportPage.verifyLeftSectionPresence();
+        jdiSupportPage.verifyLeftSectionPresence();
 
         // 11 - check checkboxs
-        JdiSupportPage.selectCheckboxs(CheckboxsList.WATER.toString(), CheckboxsList.WIND.toString());
+        jdiSupportPage.selectCheckboxs(CheckboxsList.WATER, CheckboxsList.WIND);
 
         //12 - verify logs
-        JdiSupportPage.verifyLogs(WATER_TRUE_LOG.toString(), WIND_TRUE_LOG.toString());
+        jdiSupportPage.verifyLogs(WATER_TRUE_LOG, WIND_TRUE_LOG);
 
         // 13 - Select radio button
-        JdiSupportPage.selectRadioButtons(Metals.SELEN.toString());
+        jdiSupportPage.selectRadioButtons(Metals.SELEN);
 
         // 14 - verify logs
-        JdiSupportPage.verifyLogs(SELEN_LOG.toString());
+        jdiSupportPage.verifyLogs(SELEN_LOG);
 
         // 15 - change colour
-        JdiSupportPage.selectColor();
+        jdiSupportPage.selectColor(Colors.YELLOW);
 
         // 16 - verify logs
-        JdiSupportPage.verifyLogs(YELLOW_LOG.toString());
+        jdiSupportPage.verifyLogs(YELLOW_LOG);
 
         // 17 - unselect checkboxs
-        JdiSupportPage.deselectCheckboxs(CheckboxsList.WATER.toString(), CheckboxsList.WIND.toString());
+        jdiSupportPage.deselectCheckboxs(CheckboxsList.WATER, CheckboxsList.WIND);
 
         //18 - verify logs
-        JdiSupportPage.verifyLogs(WATER_FALSE_LOG.toString(), WIND_FALSE_LOG.toString());
+        jdiSupportPage.verifyLogs(WATER_FALSE_LOG, WIND_FALSE_LOG);
     }
 }

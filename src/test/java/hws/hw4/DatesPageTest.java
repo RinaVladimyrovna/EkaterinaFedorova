@@ -3,7 +3,7 @@ package hws.hw4;
 import Base.SelenideBase;
 import hws.hw4.ENUMs.MainPage;
 import hws.hw4.ENUMs.ServiceListOptions;
-import hws.hw4.ENUMs.SlidersShift;
+import hws.hw4.ENUMs.Users;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -11,20 +11,21 @@ import org.testng.annotations.Test;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
-import static hws.hw4.ENUMs.SlidersShift.*;
+import static hws.hw4.ENUMs.Sliders.*;
 
 public class DatesPageTest extends SelenideBase {
 
     // TODO Naming convention !
-    private SelenideIndexPage JdiIndexPage;
-    private SelenideDatesPage JdiDatesPage;
+    // Done. Sorry for that.
+    private SelenideIndexPage jdiIndexPage;
+    private SelenideDatesPage jdiDatesPage;
 
     @BeforeMethod
     public void initTest() {
         // 1 - open JDI home page
         open(MainPage.JDI_PAGE_URL.toString());
-        JdiIndexPage = page(SelenideIndexPage.class);
-        JdiDatesPage = page(SelenideDatesPage.class);
+        jdiIndexPage = page(SelenideIndexPage.class);
+        jdiDatesPage = page(SelenideDatesPage.class);
     }
 
     @AfterMethod
@@ -35,52 +36,48 @@ public class DatesPageTest extends SelenideBase {
     @Test
     public void SimpleTest() {
         // 2 - check tab title
-        JdiIndexPage.verifyPageTitle();
+        jdiIndexPage.verifyPageTitle();
 
         // 3 - log in
-        JdiIndexPage.logIn();
+        jdiIndexPage.logIn(Users.PITER);
 
         // 4 - check user name
-        JdiIndexPage.verifyUserName();
+        jdiIndexPage.verifyUserName(Users.PITER);
 
         // 5 - Navigate to Different Elements Page
-        JdiIndexPage.openDifferentPage(ServiceListOptions.ITEM_2.toString());
+        jdiIndexPage.openDifferentPage(ServiceListOptions.DATES_PAGE_LINK);
 
         // 6 - Move sliders to 0 and 100
-        JdiDatesPage.moveASlider(LEFT_SLIDER.toString(), SHIFT_0.toString());
-        JdiDatesPage.moveASlider(RIGHT_SLIDER.toString(), SHIFT_100.toString());
-        System.out.println(6);
+        jdiDatesPage.moveASlider(LEFT_SLIDER, 0);
+        jdiDatesPage.moveASlider(RIGHT_SLIDER, 100);
 
         // 7 - check log records for slider movements
-        JdiDatesPage.verifyLogs(SHIFT_0.toString());
-        JdiDatesPage.verifyLogs(SHIFT_100.toString());
+        jdiDatesPage.verifyLogs(0);
+        jdiDatesPage.verifyLogs(100);
 
         // 8 - Move to 0 and 0
-        JdiDatesPage.moveASlider(LEFT_SLIDER.toString(), SHIFT_0.toString());
-        JdiDatesPage.moveASlider(RIGHT_SLIDER.toString(), SHIFT_0.toString());
-        System.out.println(8);
+        jdiDatesPage.moveASlider(LEFT_SLIDER, 0);
+        jdiDatesPage.moveASlider(RIGHT_SLIDER, 0);
 
         // 9 - check log records for slider movements
-        JdiDatesPage.verifyLogs(SHIFT_0.toString());
-        JdiDatesPage.verifyLogs(SHIFT_0.toString());
+        jdiDatesPage.verifyLogs(0);
+        jdiDatesPage.verifyLogs(0);
 
         // 10 - Move to 100 and 100
-        JdiDatesPage.moveASlider(RIGHT_SLIDER.toString(), SHIFT_100.toString());
-        JdiDatesPage.moveASlider(LEFT_SLIDER.toString(), SHIFT_100.toString());
-        System.out.println(10);
+        jdiDatesPage.moveASlider(RIGHT_SLIDER, 100);
+        jdiDatesPage.moveASlider(LEFT_SLIDER, 100);
 
         // 11 - check log records for slider movements
-        JdiDatesPage.verifyLogs(SHIFT_100.toString());
-        JdiDatesPage.verifyLogs(SHIFT_100.toString());
+        jdiDatesPage.verifyLogs(100);
+        jdiDatesPage.verifyLogs(100);
 
         // 12 - Move to 30 and 70
-        JdiDatesPage.moveASlider(LEFT_SLIDER.toString(), SHIFT_30.toString());
-        JdiDatesPage.moveASlider(RIGHT_SLIDER.toString(), SHIFT_70.toString());
-        System.out.println(12);
+        jdiDatesPage.moveASlider(LEFT_SLIDER, 30);
+        jdiDatesPage.moveASlider(RIGHT_SLIDER, 70);
 
         // 14 - check log records for slider movements
-        JdiDatesPage.verifyLogs(SHIFT_30.toString());
-        JdiDatesPage.verifyLogs(SHIFT_70.toString());
+        jdiDatesPage.verifyLogs(30);
+        jdiDatesPage.verifyLogs(70);
     }
 
 }
