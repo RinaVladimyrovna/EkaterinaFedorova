@@ -17,7 +17,7 @@ public enum RightSectionLogs {
     WIND_FALSE_LOG(" Wind: condition changed to false"),
     WATER_FALSE_LOG(" Water: condition changed to false"),
     EARTH_FALSE_LOG(" Earth: condition changed to false"),
-    FIRE_FALSE_LOG(" Fire: condition changed to false"),;
+    FIRE_FALSE_LOG(" Fire: condition changed to false");
 
     private String value;
 
