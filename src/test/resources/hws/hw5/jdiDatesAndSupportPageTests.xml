@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="JDI Suite" verbose="1">
+
+    <test name="Two page test" >
+
+        <packages>
+            <package name="hws.hw5" />
+        </packages>
+
+    </test>
+
+</suite>
