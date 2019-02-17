@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Cucumber Gherkin Suite">
+    <test name="Cucumber Gherkin Tests" >
+
+        <classes>
+            <class name="hws.hw6.ex1.RunAcceptanceTests"/>
+        </classes>
+
+    </test>
+</suite>
