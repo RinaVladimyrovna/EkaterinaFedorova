@@ -1,17 +1,22 @@
-package hws.hw5;
+package hws.hw5.ex2;
 
 import Base.SelenideBase;
 import hws.hw5.ENUMs.*;
+import hws.hw5.SelenideIndexPage;
+import hws.hw5.SelenideSupportPage;
+import hws.hw5.listeners.AllureAttachmentListener;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
 import io.qameta.allure.Story;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.*;
 import static hws.hw5.ENUMs.RightSectionLogs.*;
 
+@Listeners(AllureAttachmentListener.class)
 @Feature("Support page UI and functionality")
 public class SupportPageTest extends SelenideBase {
     private SelenideIndexPage jdiIndexPage;
@@ -34,7 +39,7 @@ public class SupportPageTest extends SelenideBase {
 
     @Test
     @Story("Support page has checkbox, radio-buttons, drop-down and log section")
-    public void SimpleTest() {
+    public void SupportPageUiTest() {
         // 2 - check tab title
         jdiIndexPage.verifyPageTitle();
 
@@ -75,7 +80,8 @@ public class SupportPageTest extends SelenideBase {
         jdiSupportPage.verifyLogs(WATER_TRUE_LOG, WIND_TRUE_LOG);
 
         // 13 - Select radio button
-        jdiSupportPage.selectRadioButtons(Metals.SELEN);
+        // modified to ruin the test execution
+        jdiSupportPage.selectRadioButtons(Metals.BRONZE);
 
         // 14 - verify logs
         jdiSupportPage.verifyLogs(SELEN_LOG);

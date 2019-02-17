@@ -1,9 +1,11 @@
-package hws.hw5;
+package hws.hw5.ex1;
 
 import Base.SelenideBase;
 import hws.hw5.ENUMs.MainPage;
 import hws.hw5.ENUMs.ServiceListOptions;
 import hws.hw5.ENUMs.Users;
+import hws.hw5.SelenideDatesPage;
+import hws.hw5.SelenideIndexPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.testng.annotations.AfterMethod;
@@ -37,7 +39,7 @@ public class DatesPageTest extends SelenideBase {
 
     @Test
     @Story("Dates page has sliders and log section")
-    public void SimpleTest() {
+    public void DatesPageUiTest() {
         // 2 - check tab title
         jdiIndexPage.verifyPageTitle();
 

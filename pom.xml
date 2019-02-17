@@ -65,6 +65,7 @@
                 <configuration>
                     <suiteXmlFiles>
                         <suiteXmlFile>src\test\resources\hws\hw5\jdiDatesAndSupportPageTests.xml</suiteXmlFile>
+                        <suiteXmlFile>src\test\resources\hws\hw5\jdiDatesAndSupportPageFailingTest.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"

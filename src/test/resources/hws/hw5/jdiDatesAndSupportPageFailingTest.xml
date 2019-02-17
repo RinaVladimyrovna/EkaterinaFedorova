@@ -1,11 +1,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="JDI Suite" verbose="1">
+<suite name="JDI Suite" verbose="1" parallel="methods" thread-count="3">
 
     <test name="Two page test" >
 
         <packages>
             <package name="hws.hw5.ex1" />
+            <package name="hws.hw5.ex2" />
         </packages>
 
     </test>
