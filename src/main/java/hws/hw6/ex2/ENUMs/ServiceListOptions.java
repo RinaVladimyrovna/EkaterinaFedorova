@@ -1,4 +1,4 @@
-package hws.hw6.ENUMs;
+package hws.hw6.ex2.ENUMs;
 
 // TODO Enum names should be written with relation to it purpose !
 // DONE. Reverted your correction to leave the test running, since there is no PITER TABLE option in the list

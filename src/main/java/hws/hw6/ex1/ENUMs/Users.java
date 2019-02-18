@@ -1,4 +1,4 @@
-package hws.hw6.ENUMs;
+package hws.hw6.ex1.ENUMs;
 
 public enum Users {
     PITER("epam", "1234", "PITER CHAILOVSKII");

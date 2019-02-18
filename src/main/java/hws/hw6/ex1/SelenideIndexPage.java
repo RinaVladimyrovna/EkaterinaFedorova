@@ -1,18 +1,14 @@
-package hws.hw6;
+package hws.hw6.ex1;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import hws.hw6.ENUMs.MainPage;
-import hws.hw6.ENUMs.ServiceListOptions;
-import hws.hw6.ENUMs.Users;
+import hws.hw6.ex1.ENUMs.ServiceListOptions;
+import hws.hw6.ex1.ENUMs.Users;
 import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static hws.hw6.ENUMs.ServiceListOptions.values;
-import static org.testng.Assert.assertEquals;
 
 public class SelenideIndexPage {
 
@@ -51,27 +47,6 @@ public class SelenideIndexPage {
 
     @FindBy(css = "ul.sub span")
     private ElementsCollection leftServiceListItems;
-
-    @FindBy(css = "[class='label-checkbox']")
-    private ElementsCollection checkboxs;
-
-    @FindBy(css = "[class='label-radio']")
-    private ElementsCollection radioButtons;
-
-    @FindBy(css = "[class='colors']")
-    private SelenideElement colorList;
-
-    @FindBy(css = "[class='uui-button']")
-    private ElementsCollection buttons;
-
-    @FindBy(css = "[id='mCSB_1']")
-    private SelenideElement leftSection;
-
-    @FindBy(css = "[name='log-sidebar']")
-    private SelenideElement rightSection;
-
-    @FindBy(css = "[class='panel-body-list logs'] li")
-    private ElementsCollection rightSectionLogs;
 
     public SelenideIndexPage() {
         page(this);
@@ -120,8 +95,6 @@ public class SelenideIndexPage {
         return leftServiceListItems;
     }
 
-    // TODO This method should be parametrised by enum instead of string
-    // Done
     public void openDifferentPage(ServiceListOptions pageName) {
         serviceOption.click();
         serviceListItems.findBy(text(pageName.toString())).click();

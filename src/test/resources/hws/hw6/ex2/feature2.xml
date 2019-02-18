@@ -4,7 +4,7 @@
     <test name="Cucumber Gherkin Tests">
 
         <classes>
-            <class name="hws.hw6.ex1.RunAcceptanceTests"/>
+            <class name="hws.hw6.ex2.RunAcceptanceTests"/>
         </classes>
 
     </test>
