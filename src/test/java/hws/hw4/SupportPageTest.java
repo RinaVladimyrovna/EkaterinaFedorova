@@ -9,6 +9,8 @@ import org.testng.annotations.Test;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
+import static hws.hw4.ENUMs.CheckboxsList.*;
+import static hws.hw4.ENUMs.Metals.*;
 import static hws.hw4.ENUMs.RightSectionLogs.*;
 
 public class SupportPageTest extends SelenideBase {
@@ -34,13 +36,9 @@ public class SupportPageTest extends SelenideBase {
         jdiIndexPage.verifyPageTitle();
 
         // 3 - log in
-        // TODO Parameter ?
-        // Done
         jdiIndexPage.logIn(Users.PITER);
 
         // 4 - check user name
-        // TODO Parameter ?
-        // Done
         jdiIndexPage.verifyUserName(Users.PITER);
 
         // 5 - check "Service" subcategories in the header
@@ -64,13 +62,13 @@ public class SupportPageTest extends SelenideBase {
         jdiSupportPage.verifyLeftSectionPresence();
 
         // 11 - check checkboxs
-        jdiSupportPage.selectCheckboxs(CheckboxsList.WATER, CheckboxsList.WIND);
+        jdiSupportPage.selectCheckboxs(WATER, WIND);
 
         //12 - verify logs
         jdiSupportPage.verifyLogs(WATER_TRUE_LOG, WIND_TRUE_LOG);
 
         // 13 - Select radio button
-        jdiSupportPage.selectRadioButtons(Metals.SELEN);
+        jdiSupportPage.selectRadioButtons(SELEN);
 
         // 14 - verify logs
         jdiSupportPage.verifyLogs(SELEN_LOG);
@@ -82,7 +80,7 @@ public class SupportPageTest extends SelenideBase {
         jdiSupportPage.verifyLogs(YELLOW_LOG);
 
         // 17 - unselect checkboxs
-        jdiSupportPage.deselectCheckboxs(CheckboxsList.WATER, CheckboxsList.WIND);
+        jdiSupportPage.deselectCheckboxs(WATER, WIND);
 
         //18 - verify logs
         jdiSupportPage.verifyLogs(WATER_FALSE_LOG, WIND_FALSE_LOG);

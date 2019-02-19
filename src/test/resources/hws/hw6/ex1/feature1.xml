@@ -3,6 +3,8 @@
 <suite name="Cucumber Gherkin Suite">
     <test name="Cucumber Gherkin Tests">
 
+        <!--TODO Basically, you should create one single testng xml config file for both tests-->
+
         <classes>
             <class name="hws.hw6.ex1.RunAcceptanceTests"/>
         </classes>

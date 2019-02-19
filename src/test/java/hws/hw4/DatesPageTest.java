@@ -15,8 +15,6 @@ import static hws.hw4.ENUMs.Sliders.*;
 
 public class DatesPageTest extends SelenideBase {
 
-    // TODO Naming convention !
-    // Done. Sorry for that.
     private SelenideIndexPage jdiIndexPage;
     private SelenideDatesPage jdiDatesPage;
 

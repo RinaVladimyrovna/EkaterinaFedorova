@@ -2,6 +2,12 @@ package hws.hw4.ENUMs;
 
 public enum RightSectionLogs {
 
+    /* TODO Basically yes, you can store all of the logs rows as it is,
+     but in some cases it might be better with template and runtime generation,
+     For the example -
+     METAL_LOG("metal: value changed to %s"),
+     NATURE_ELEMENTS_LOG(" %s: condition changed to %s"),
+    */
     WIND_TRUE_LOG(" Wind: condition changed to true"),
     WATER_TRUE_LOG(" Water: condition changed to true"),
     EARTH_TRUE_LOG(" Earth: condition changed to true"),

@@ -1,6 +1,6 @@
 package hws.hw5.ENUMs;
 
-// TODO Enum names should be written with relation to it purpose !
+// Enum names should be written with relation to it purpose !
 // DONE. Reverted your correction to leave the test running, since there is no PITER TABLE option in the list
 public enum ServiceListOptions {
 

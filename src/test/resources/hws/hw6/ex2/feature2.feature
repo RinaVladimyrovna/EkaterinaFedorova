@@ -1,7 +1,7 @@
 Feature: Use Table Test
 
+  # TODO It will be better to reuse steps from previous scenario instead of create new one
   Scenario: User Table Page test
-
     Given I am on 'Home Page'
     And I login as user 'PITER'
     When I click on 'Service' button in Header

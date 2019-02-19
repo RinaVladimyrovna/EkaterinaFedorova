@@ -7,8 +7,8 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 import org.testng.annotations.BeforeSuite;
 
 @CucumberOptions(
-        features = "src/test/resources/hws/hw6/ex1",
-        glue = "classpath:hws.hw6.ex1"
+        features = "src/test/resources/hws/hw6",
+        glue = "classpath:hws.hw6"
 )
 
 public class RunAcceptanceTests extends AbstractTestNGCucumberTests {
