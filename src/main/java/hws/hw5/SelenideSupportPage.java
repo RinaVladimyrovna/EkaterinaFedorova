@@ -41,8 +41,6 @@ public class SelenideSupportPage {
         }
     }
 
-    // TODO It is not really necessary to parametrise this one
-    // Done. Just a thought to re use it for another pages with different elements number
     @Step("Verify that there is a correct number of page elements")
     public void verifyPageElements() {
         checkboxs.shouldHaveSize(4);
@@ -63,14 +61,9 @@ public class SelenideSupportPage {
         leftSection.shouldBe(visible);
     }
 
-    // TODO Most all of this methods should be parametrised by enum instead of String.
-    // Done
     @Step("Select checkboxes")
     public void selectCheckboxs(CheckboxsList... boxes) {
         for (CheckboxsList box : boxes) {
-            // TODO Nice attempt, but you have to use Selenide approach
-            // TODO Take a look on ElementsCollection and method that allow you to do the variety of cool stuff
-            // TODO Basically, you should not find elements in the OP method, use @FindBy
             checkboxs.findBy(text(box.toString())).click();
         }
     }
@@ -97,8 +90,6 @@ public class SelenideSupportPage {
         }
     }
 
-    // TODO Parameter ?
-    // Done
     @Step("Expand drop-down with colour names and select {0} colour")
     public void selectColor(Colors color) {
         colorList.click();

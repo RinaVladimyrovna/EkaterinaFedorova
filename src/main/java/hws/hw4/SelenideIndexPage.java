@@ -98,8 +98,6 @@ public class SelenideIndexPage {
         }
     }
 
-    // TODO This method should be parametrised by enum instead of string
-    // Done
     public void openDifferentPage(ServiceListOptions pageName) {
         serviceOption.click();
         serviceListItems.findBy(text(pageName.toString())).click();

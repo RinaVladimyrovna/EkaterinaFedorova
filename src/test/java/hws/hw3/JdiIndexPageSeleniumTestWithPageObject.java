@@ -14,7 +14,6 @@ import static hws.hw3.ENUMs.NavigationPanel.NAVIGATION;
 import static hws.hw3.ENUMs.Users.*;
 
 public class JdiIndexPageSeleniumTestWithPageObject {
-    // TODO Pay attention on naming convention
     private JdiIndexPage jdiIndexPage;
 
     @BeforeMethod

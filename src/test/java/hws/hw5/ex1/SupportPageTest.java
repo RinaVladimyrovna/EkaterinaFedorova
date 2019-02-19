@@ -41,13 +41,9 @@ public class SupportPageTest extends SelenideBase {
         jdiIndexPage.verifyPageTitle();
 
         // 3 - log in
-        // TODO Parameter ?
-        // Done
         jdiIndexPage.logIn(Users.PITER);
 
         // 4 - check user name
-        // TODO Parameter ?
-        // Done
         jdiIndexPage.verifyUserName(Users.PITER);
 
         // 5 - check "Service" subcategories in the header

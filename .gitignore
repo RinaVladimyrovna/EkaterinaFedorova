@@ -2,3 +2,5 @@
 *.iml
 target
 /build
+
+# TODO This file can be improved, pay attention on allure plugin
