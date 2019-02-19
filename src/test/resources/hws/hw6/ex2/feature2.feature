@@ -1,11 +1,11 @@
 Feature: Use Table Test
 
   # TODO It will be better to reuse steps from previous scenario instead of create new one
+  # Done. Supposed that scenario should be left intact at maximum
   Scenario: User Table Page test
-    Given I am on 'Home Page'
-    And I login as user 'PITER'
-    When I click on 'Service' button in Header
-    And I click on 'User Table' button in Service dropdown
+    Given I open the site
+    And I login as 'PITER'
+    When I follow USER_TABLE_PAGE_LINK via the header drop-down
     Then 'User Table' page is opened
     And 6 NumberType Dropdowns are displayed on Users Table on User Table Page
     And 6 User names are displayed on Users Table on User Table Page

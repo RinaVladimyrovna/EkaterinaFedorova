@@ -1,6 +1,9 @@
+.allure
 .idea
 *.iml
 target
 /build
+/allure-results
 
 # TODO This file can be improved, pay attention on allure plugin
+# That little horseredish created a new directory the way I've not noticed!

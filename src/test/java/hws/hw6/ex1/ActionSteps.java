@@ -26,9 +26,9 @@ public class ActionSteps {
         jdiIndexPage.expandLeftServiceList();
     }
 
-    @When("^I navigate to Different Elements Page via the header drop-down$")
-    public void OpenDifferentElementsPage() {
-        jdiIndexPage.openDifferentPage(ServiceListOptions.DIFFERENT_ELEMENTS_PAGE_LINK);
+    @When("^I follow ([^\"]*) via the header drop-down$")
+    public void OpenDifferentElementsPage(ServiceListOptions page) {
+        jdiIndexPage.openDifferentPage(page);
     }
 
     @When("^I select checkboxes:$")

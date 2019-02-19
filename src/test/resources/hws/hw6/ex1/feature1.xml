@@ -4,6 +4,7 @@
     <test name="Cucumber Gherkin Tests">
 
         <!--TODO Basically, you should create one single testng xml config file for both tests-->
+        <!-- resources/hws/hw6/allFeatures.xml created and common RunAcceptanceTest file is created too -->
 
         <classes>
             <class name="hws.hw6.ex1.RunAcceptanceTests"/>

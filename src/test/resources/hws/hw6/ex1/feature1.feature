@@ -33,7 +33,8 @@ Feature: Different Elements Page Test
 
     # TODO This step should be parametrised, so you have to create
     # TODO one single step that can be user in order to open any kind of pages
-    When I navigate to Different Elements Page via the header drop-down
+    # Done via ServiceListOptions ENUM
+    When I follow DIFFERENT_ELEMENTS_PAGE_LINK via the header drop-down
     Then Interface on Different elements page contains all needed elements
     And There is a Right section
     And There is a Left section
