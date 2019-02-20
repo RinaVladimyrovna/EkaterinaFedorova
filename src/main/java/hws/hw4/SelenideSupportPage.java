@@ -62,11 +62,32 @@ public class SelenideSupportPage {
         }
     }
 
+    /* An obsolete method to verify logs.
+       Seems to be a good practice to combine it with the following ones to not call n times in case of need.
+       On other hand, too complex signature would be.
     public void verifyLogs(RightSectionLogs... logs) {
         for (RightSectionLogs log : logs) {
             rightSectionLogs.findBy(text(log.toString())).shouldBe(visible);
         }
     }
+    */
+
+    //* Three methods below with different signature to allow logs verification of different structure
+    public void verifyLogs(CheckboxsList checkboxName, RightSectionLogs logTemplate, TrueFalse ending) {
+        String logLine = String.format(logTemplate.toString(), checkboxName.toString(), ending);
+        rightSectionLogs.findBy(text(logLine)).shouldBe(visible);
+    }
+
+    public void verifyLogs(RightSectionLogs logTemplate, Colors ending) {
+        String logLine = String.format(logTemplate.toString(), ending.toString());
+        rightSectionLogs.findBy(text(logLine)).shouldBe(visible);
+    }
+
+    public void verifyLogs(RightSectionLogs logTemplate, Metals ending) {
+        String logLine = String.format(logTemplate.toString(), ending.toString());
+        rightSectionLogs.findBy(text(logLine)).shouldBe(visible);
+    }
+    //* Three methods above with different signature to allow logs verification of different structure
 
     public void selectRadioButtons(Metals... buttons) {
         for (Metals button : buttons) {

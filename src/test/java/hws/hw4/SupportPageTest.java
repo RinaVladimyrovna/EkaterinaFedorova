@@ -10,8 +10,10 @@ import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
 import static hws.hw4.ENUMs.CheckboxsList.*;
+import static hws.hw4.ENUMs.Colors.*;
 import static hws.hw4.ENUMs.Metals.*;
 import static hws.hw4.ENUMs.RightSectionLogs.*;
+import static hws.hw4.ENUMs.TrueFalse.*;
 
 public class SupportPageTest extends SelenideBase {
     private SelenideIndexPage jdiIndexPage;
@@ -65,24 +67,26 @@ public class SupportPageTest extends SelenideBase {
         jdiSupportPage.selectCheckboxs(WATER, WIND);
 
         //12 - verify logs
-        jdiSupportPage.verifyLogs(WATER_TRUE_LOG, WIND_TRUE_LOG);
+        jdiSupportPage.verifyLogs(WATER, ELEMENT_LOG, TRUE);
+        jdiSupportPage.verifyLogs(WIND, ELEMENT_LOG, TRUE);
 
         // 13 - Select radio button
         jdiSupportPage.selectRadioButtons(SELEN);
 
         // 14 - verify logs
-        jdiSupportPage.verifyLogs(SELEN_LOG);
+        jdiSupportPage.verifyLogs(METAL_LOG, SELEN);
 
         // 15 - change colour
-        jdiSupportPage.selectColor(Colors.YELLOW);
+        jdiSupportPage.selectColor(YELLOW);
 
         // 16 - verify logs
-        jdiSupportPage.verifyLogs(YELLOW_LOG);
+        jdiSupportPage.verifyLogs(COLOUR_LOG, YELLOW);
 
         // 17 - unselect checkboxs
         jdiSupportPage.deselectCheckboxs(WATER, WIND);
 
         //18 - verify logs
-        jdiSupportPage.verifyLogs(WATER_FALSE_LOG, WIND_FALSE_LOG);
+        jdiSupportPage.verifyLogs(WATER, ELEMENT_LOG, FALSE);
+        jdiSupportPage.verifyLogs(WIND, ELEMENT_LOG, FALSE);
     }
 }
