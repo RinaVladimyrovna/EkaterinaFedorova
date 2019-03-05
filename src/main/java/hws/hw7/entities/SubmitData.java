@@ -20,15 +20,4 @@ public enum SubmitData {
     public final String metalDropDown;
     public final List<String> vegetableDropDown;
 
-    public List<String> getRadioButtons() {
-        return radioButtons;
-    }
-
-    public List<String> getCheckboxes() {
-        return checkboxes;
-    }
-
-    public List<String> getVegetableDropDown() {
-        return vegetableDropDown;
-    }
 }

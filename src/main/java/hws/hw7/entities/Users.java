@@ -1,5 +1,8 @@
 package hws.hw7.entities;
 
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 public class Users {
 
     public static Users PITER = new Users("epam", "1234", "PITER CHAILOVSKII");
@@ -7,11 +10,5 @@ public class Users {
     String login;
     String password;
     String fullName;
-
-    Users(String login, String password, String fullName) {
-        this.login = login;
-        this.password = password;
-        this.fullName = fullName;
-    }
 
 }

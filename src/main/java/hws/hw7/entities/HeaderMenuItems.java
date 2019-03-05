@@ -1,18 +1,18 @@
 package hws.hw7.entities;
 
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 public enum HeaderMenuItems {
 
     // TODO This is not the links, as for me.
-    HOME_PAGE_LINK("HOME"),
-    CONTACT_FORM_PAGE_LINK("CONTACT FORM"),
+    //Made them options
+    HOME_PAGE_OPTION("HOME"),
+    CONTACT_FORM_PAGE_OPTION("CONTACT FORM"),
     SERVICE_LIST_OPTIONS("SERVICE"),
-    METALS_AND_COLORS_PAGE_LINK("METALS & COLORS");
+    METALS_AND_COLORS_PAGE_OPTION("METALS & COLORS");
 
     private String value;
-
-    HeaderMenuItems(String value) {
-        this.value = value;
-    }
 
     @Override
     public String toString() {
