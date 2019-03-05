@@ -2,6 +2,7 @@ package hws.hw7.entities;
 
 public enum HeaderMenuItems {
 
+    // TODO This is not the links, as for me.
     HOME_PAGE_LINK("HOME"),
     CONTACT_FORM_PAGE_LINK("CONTACT FORM"),
     SERVICE_LIST_OPTIONS("SERVICE"),
