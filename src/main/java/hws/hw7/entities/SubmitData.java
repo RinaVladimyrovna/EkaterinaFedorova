@@ -1,8 +1,14 @@
 package hws.hw7.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 import java.util.Arrays;
 import java.util.List;
 
+// TODO !
+@Getter
+@AllArgsConstructor
 public enum SubmitData {
 
     METALS_AND_COLORS_FORM_HW7(Arrays.asList("3", "8"), Arrays.asList("Water", "Fire"), "Red",
@@ -25,13 +31,4 @@ public enum SubmitData {
     public List<String> getVegetableDropDown() {
         return vegetableDropDown;
     }
-
-    SubmitData(List<String> radioButtons, List<String> checkboxes, String colorDropDown, String metalDropDown, List<String> vegetableDropDown) {
-        this.radioButtons = radioButtons;
-        this.checkboxes = checkboxes;
-        this.colorDropDown = colorDropDown;
-        this.metalDropDown = metalDropDown;
-        this.vegetableDropDown = vegetableDropDown;
-    }
-
 }
