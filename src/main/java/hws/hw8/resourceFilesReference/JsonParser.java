@@ -16,9 +16,12 @@ public class JsonParser {
 
         List<SubmitData> tempData = new ArrayList<>();
         JSONObject data = new JSONObject(new String(Files.readAllBytes(Paths.get(address))));
+        // TODO Take a look on IDEA warning, this is really bad mistake.
         String[] names = data.getNames(data);
 
         for (String name : names) {
+            // TODO This is completely prohibited to write algorithm that depends on data name/title.
+            // TODO Most all of this libraries use reflection mechanism under the hood.
             JSONObject currentObject = data.getJSONObject(name);
             List<String> radioButtons = convertator(currentObject.getJSONArray("summary"));
             List<String> checkboxes = convertator(currentObject.getJSONArray("elements"));
