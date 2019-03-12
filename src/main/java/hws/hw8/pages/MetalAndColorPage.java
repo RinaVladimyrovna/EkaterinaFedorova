@@ -20,8 +20,9 @@ public class MetalAndColorPage extends WebPage {
     @Css("ul[class = 'panel-body-list results']>li")
     private WebList resultSectionLogs;
 
+    // TODO Basically, this method has no relation with PO, therefore it should not be here
     private String summarizeElements(List<String> elements) {
-
+        // TODO Take a look on IDEA warning. It will be better with String::join or stream::collect
         String resultString = "";
 
         for (String el : elements) {
@@ -38,8 +39,8 @@ public class MetalAndColorPage extends WebPage {
         return expandedResult;
     }
 
+    // TODO Same story like summarizeElements method
     private int calculateSumm(List<String> radioButtons) {
-
         int summ = 0;
         for (String el : radioButtons) {
             summ += Integer.valueOf(el);
@@ -47,12 +48,14 @@ public class MetalAndColorPage extends WebPage {
         return summ;
     }
 
+    // TODO Same story like summarizeElements method
     private List<String> prepareResults(SubmitData unpreparedResults) {
 
         List<String> result = new ArrayList<>();
 
         result.add(Integer.toString(calculateSumm(unpreparedResults.radioButtons)));
         result.add(summarizeElements(unpreparedResults.checkboxes));
+        // TODO This is really uncommon approach for java. You should not write code in c/c++ style.
         result = addValue(result, unpreparedResults.colorDropDown);
         result = addValue(result, unpreparedResults.metalDropDown);
         result.add(summarizeElements(unpreparedResults.vegetableDropDown));
@@ -65,10 +68,12 @@ public class MetalAndColorPage extends WebPage {
         form.submitForm();
     }
 
+    // TODO This method should be parametrise by SubmitData only.
     public void verifyResultSectionLogs(ResultsTemplates templates, SubmitData unpreparedResults) {
 
         List<String> result = prepareResults(unpreparedResults);
 
+        // TODO What happen if you have an empty log ?
         for (int i = 0; i < resultSectionLogs.size(); i++) {
             String logLine = resultSectionLogs.get(i).getText();
             String example = String.format(templates.getTemplates().get(i), result.get(i));

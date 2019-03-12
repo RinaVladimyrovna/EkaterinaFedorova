@@ -7,7 +7,10 @@ import hws.hw8.entities.SubmitData;
 import hws.hw8.entities.Users;
 import hws.hw8.resourceFilesReference.FilesReference;
 import hws.hw8.resourceFilesReference.JsonParser;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.util.List;
@@ -23,6 +26,8 @@ public class JdiFormTest {
         Object[][] result = new Object[dataList.size()][2];
         int index = 0;
 
+        // TODO What is the reason of foreach loop rather than fori ?
+        // TODO Take a look on idea warning.
         for (SubmitData el : dataList) {
             result[index][0] = index;
             result[index][1] = dataList.get(index);
