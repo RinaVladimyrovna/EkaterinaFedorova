@@ -17,7 +17,7 @@ public class JsonParser {
         List<SubmitData> tempData = new ArrayList<>();
         JSONObject data = new JSONObject(new String(Files.readAllBytes(Paths.get(address))));
         // TODO Take a look on IDEA warning, this is really bad mistake.
-        String[] names = data.getNames(data);
+        String[] names = JSONObject.getNames(data);
 
         for (String name : names) {
             // TODO This is completely prohibited to write algorithm that depends on data name/title.

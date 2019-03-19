@@ -56,7 +56,7 @@ public class JdiFormTest {
         JdiPage.metalsColorsPage.fillInForm(data);
 
         //4 - evaluate results
-        JdiPage.metalsColorsPage.verifyResultSectionLogs(ResultsTemplates.FULL_TEMPLATE, data);
+        JdiPage.metalsColorsPage.verifyResultSectionLogs(data);
 
     }
 

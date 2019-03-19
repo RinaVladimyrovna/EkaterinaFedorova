@@ -7,7 +7,6 @@ import hws.hw8.entities.ResultsTemplates;
 import hws.hw8.entities.SubmitData;
 import hws.hw8.forms.MetalAndColorPageForm;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -21,47 +20,14 @@ public class MetalAndColorPage extends WebPage {
     private WebList resultSectionLogs;
 
     // TODO Basically, this method has no relation with PO, therefore it should not be here
-    private String summarizeElements(List<String> elements) {
         // TODO Take a look on IDEA warning. It will be better with String::join or stream::collect
-        String resultString = "";
-
-        for (String el : elements) {
-            if (!resultString.equals("")) {
-                resultString += ", ";
-            }
-            resultString += el;
-        }
-        return resultString;
-    }
-
-    private List<String> addValue(List<String> expandedResult, String value) {
-        expandedResult.add(value);
-        return expandedResult;
-    }
+    // incorporated into the prepareResults method below
 
     // TODO Same story like summarizeElements method
-    private int calculateSumm(List<String> radioButtons) {
-        int summ = 0;
-        for (String el : radioButtons) {
-            summ += Integer.valueOf(el);
-        }
-        return summ;
-    }
+    // Moved to SubmitData.java
 
     // TODO Same story like summarizeElements method
-    private List<String> prepareResults(SubmitData unpreparedResults) {
-
-        List<String> result = new ArrayList<>();
-
-        result.add(Integer.toString(calculateSumm(unpreparedResults.radioButtons)));
-        result.add(summarizeElements(unpreparedResults.checkboxes));
-        // TODO This is really uncommon approach for java. You should not write code in c/c++ style.
-        result = addValue(result, unpreparedResults.colorDropDown);
-        result = addValue(result, unpreparedResults.metalDropDown);
-        result.add(summarizeElements(unpreparedResults.vegetableDropDown));
-
-        return result;
-    }
+    // Moved to SubmitData.java
 
     public void fillInForm(SubmitData data) {
         form.fillForm(data);
@@ -69,15 +35,21 @@ public class MetalAndColorPage extends WebPage {
     }
 
     // TODO This method should be parametrise by SubmitData only.
-    public void verifyResultSectionLogs(ResultsTemplates templates, SubmitData unpreparedResults) {
+    // Why?
+    public void verifyResultSectionLogs(SubmitData unpreparedResults) {
 
-        List<String> result = prepareResults(unpreparedResults);
+        List<String> result = unpreparedResults.prepareResults(unpreparedResults);
 
         // TODO What happen if you have an empty log ?
-        for (int i = 0; i < resultSectionLogs.size(); i++) {
-            String logLine = resultSectionLogs.get(i).getText();
-            String example = String.format(templates.getTemplates().get(i), result.get(i));
-            assertThat(logLine, equalTo(example));
+        // There are several cases to use. Let's make the test falling in such a case.
+        if (resultSectionLogs.size() < result.size()) {
+            assertThat(resultSectionLogs.size(), equalTo(result.size()));
+        } else {
+            for (int i = 0; i < resultSectionLogs.size(); i++) {
+                String logLine = resultSectionLogs.get(i).getText();
+                String example = String.format(ResultsTemplates.FULL_TEMPLATE.getTemplates().get(i), result.get(i));
+                assertThat(logLine, equalTo(example));
+            }
         }
     }
 
