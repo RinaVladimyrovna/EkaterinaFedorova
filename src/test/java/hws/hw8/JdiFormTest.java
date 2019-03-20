@@ -2,11 +2,10 @@ package hws.hw8;
 
 import com.epam.jdi.light.driver.WebDriverFactory;
 import com.epam.jdi.light.ui.html.PageFactory;
-import hws.hw8.entities.ResultsTemplates;
 import hws.hw8.entities.SubmitData;
 import hws.hw8.entities.Users;
 import hws.hw8.resourceFilesReference.FilesReference;
-import hws.hw8.resourceFilesReference.JsonParser;
+import hws.hw8.resourceFilesReference.JsonParserWrapper;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -22,16 +21,16 @@ public class JdiFormTest {
     @DataProvider
     private Object[][] simpleDataProvider() throws IOException {
 
-        List<SubmitData> dataList = JsonParser.parseInputJson(FilesReference.INPUT_METALS_COLORS_DATA_SET.toString());
+        List<SubmitData> dataList = JsonParserWrapper
+                .parseInputJson(FilesReference.INPUT_METALS_COLORS_DATA_SET.toString());
         Object[][] result = new Object[dataList.size()][2];
-        int index = 0;
 
         // TODO What is the reason of foreach loop rather than fori ?
+        // We were told that iteration through all elements looks better in foreach
         // TODO Take a look on idea warning.
-        for (SubmitData el : dataList) {
+        for (int index = 0; index < dataList.size(); index++) {
             result[index][0] = index;
             result[index][1] = dataList.get(index);
-            index++;
         }
 
         return result;

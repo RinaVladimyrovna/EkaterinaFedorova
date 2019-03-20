@@ -1,37 +1,37 @@
 {
   "data_1": {
-    "summary": [1,2],
-    "elements": ["Water", "Fire"],
-    "color": "Red",
-    "metals": "Gold",
-    "vegetables": ["Cucumber"]
+    "radioButtons": [1,2],
+    "checkboxes": ["Water", "Fire"],
+    "colorDropDown": "Red",
+    "metalDropDown": "Gold",
+    "vegetableDropDown": ["Cucumber"]
   },
   "data_2": {
-    "summary": [1,8],
-    "elements": ["Earth", "Wind"],
-    "color": "Green",
-    "metals": "Silver",
-    "vegetables": ["Tomato", "Vegetables"]
+    "radioButtons": [1,8],
+    "checkboxes": ["Earth", "Wind"],
+    "colorDropDown": "Green",
+    "metalDropDown": "Silver",
+    "vegetableDropDown": ["Tomato", "Vegetables"]
   },
   "data_3": {
-    "summary": [7,8],
-    "elements": ["Earth", "Fire"],
-    "color": "Blue",
-    "metals": "Bronze",
-    "vegetables": ["Tomato", "Vegetables", "Onion"]
+    "radioButtons": [7,8],
+    "checkboxes": ["Earth", "Fire"],
+    "colorDropDown": "Blue",
+    "metalDropDown": "Bronze",
+    "vegetableDropDown": ["Tomato", "Vegetables", "Onion"]
   },
   "data_4": {
-    "summary": [5,6],
-    "elements": ["Water", "Wind"],
-    "color": "Yellow",
-    "metals": "Selen",
-    "vegetables": ["Cucumber", "Onion"]
+    "radioButtons": [5,6],
+    "checkboxes": ["Water", "Wind"],
+    "colorDropDown": "Yellow",
+    "metalDropDown": "Selen",
+    "vegetableDropDown": ["Cucumber", "Onion"]
   },
   "data_5": {
-    "summary": [7,2],
-    "elements": ["Water", "Earth", "Wind", "Fire"],
-    "color": "Blue",
-    "metals": "Selen",
-    "vegetables": ["Cucumber", "Tomato", "Vegetables", "Onion"]
+    "radioButtons": [7,2],
+    "checkboxes": ["Water", "Earth", "Wind", "Fire"],
+    "colorDropDown": "Blue",
+    "metalDropDown": "Selen",
+    "vegetableDropDown": ["Cucumber", "Tomato", "Vegetables", "Onion"]
   }
 }
