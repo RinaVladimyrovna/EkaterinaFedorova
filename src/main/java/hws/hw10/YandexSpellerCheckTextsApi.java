@@ -1,5 +1,7 @@
 package hws.hw10;
 
+import static org.hamcrest.Matchers.lessThan;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import hws.hw10.entities.MethodConstants;
@@ -13,15 +15,18 @@ import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 import org.apache.http.HttpStatus;
 
-import java.util.*;
-
-import static org.hamcrest.Matchers.lessThan;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 public class YandexSpellerCheckTextsApi {
 
     private YandexSpellerCheckTextsApi() {
     }
 
+    //todo у тебя в константах уже есть такая переменная
+    //можешь тут оставить /services/spellservice.json/checkTexts.энв - вынести в константы
     public static final String YANDEX_SPELLER_API_URL =
             "https://speller.yandex.net/services/spellservice.json/checkTexts";
 
@@ -67,6 +72,7 @@ public class YandexSpellerCheckTextsApi {
         return result;
     }
 
+    //todo убери неиспользуемые методы.
     private static ResponseSpecification successResponse() {
         return new ResponseSpecBuilder()
                 .expectContentType(ContentType.JSON)
