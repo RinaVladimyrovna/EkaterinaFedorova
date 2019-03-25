@@ -2,7 +2,7 @@ package hws.hw10.entities;
 
 public enum MethodConstants {
 
-    URL("https://speller.yandex.net/services/spellservice.json/checkTexts"),
+    ENV_URL("https://speller.yandex.net/"),
     TEXT("text"),
     LANGUAGE("lang"),
     OPTIONS("options"),

@@ -1,19 +1,18 @@
 package hws.hw10;
 
-import static org.hamcrest.Matchers.lessThan;
+import static hws.hw10.entities.MethodConstants.ENV_URL;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import hws.hw10.entities.ApplicableOptionValues;
 import hws.hw10.entities.MethodConstants;
 import hws.hw10.entities.SpellerReceivedResponse;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import io.restassured.specification.ResponseSpecification;
-import org.apache.http.HttpStatus;
+;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,8 +26,7 @@ public class YandexSpellerCheckTextsApi {
 
     //todo у тебя в константах уже есть такая переменная
     //можешь тут оставить /services/spellservice.json/checkTexts.энв - вынести в константы
-    public static final String YANDEX_SPELLER_API_URL =
-            "https://speller.yandex.net/services/spellservice.json/checkTexts";
+    public static final String YANDEX_SPELLER_API_URL = ENV_URL.toString() + "services/spellservice.json/checkTexts";
 
     private HashMap<String, List<String>> parameters = new HashMap<>();
 
@@ -39,9 +37,9 @@ public class YandexSpellerCheckTextsApi {
             builder = api;
         }
 
-        public ParametersBuilder addStringParameter(MethodConstants paramName, String params) {
+        public ParametersBuilder addStringParameter(MethodConstants paramName, ApplicableOptionValues params) {
             System.out.println(paramName.toString());
-            builder.parameters.put(paramName.toString(), new ArrayList<String>(Arrays.asList(params)));
+            builder.parameters.put(paramName.toString(), new ArrayList<String>(Arrays.asList(params.toString())));
             return this;
         }
 
@@ -73,14 +71,6 @@ public class YandexSpellerCheckTextsApi {
     }
 
     //todo убери неиспользуемые методы.
-    private static ResponseSpecification successResponse() {
-        return new ResponseSpecBuilder()
-                .expectContentType(ContentType.JSON)
-                .expectHeader("Connection", "keep-alive")
-                .expectResponseTime(lessThan(2000L))
-                .expectStatusCode(HttpStatus.SC_OK)
-                .build();
-    }
 
     public static RequestSpecification baseRequestConfiguration() {
         return new RequestSpecBuilder()
