@@ -1,17 +1,22 @@
 package hws.hw10;
 
+import static hws.hw10.ResponseAssertions.assertCorrectionsAmount;
+import static hws.hw10.ResponseAssertions.assertErrorCodeIs;
+import static hws.hw10.ResponseAssertions.assertProposedWordIs;
+import static hws.hw10.entities.MethodConstants.LANGUAGE;
+import static hws.hw10.entities.MethodConstants.OPTIONS;
+import static hws.hw10.entities.MethodConstants.TEXT;
+
 import hws.hw10.entities.SpellerReceivedResponse;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static hws.hw10.ResponseAssertions.*;
-import static hws.hw10.entities.MethodConstants.*;
-
 
 public class YandexSpellerCheckTextsTests {
 
     @Test
+    //todo можно не коменты писать, а description в аннотации Test
     //1 - verify that CheckTexts is working correctly with one text argument
     public void checkSingleMistake() {
 
@@ -19,7 +24,7 @@ public class YandexSpellerCheckTextsTests {
         List<SpellerReceivedResponse> response = YandexSpellerCheckTextsApi.getSpellerAnswers(
                 YandexSpellerCheckTextsApi.getParameterAccumulator()
                         .addTexts(TEXT, text)
-                        .addStringParameter(LANGUAGE, "en")
+                        .addStringParameter(LANGUAGE, "en")//todo en  - можно вынести в enum
                         .callApi());
         assertErrorCodeIs(response.get(0), 1);
         assertProposedWordIs(response.get(0), "cheese");
@@ -115,6 +120,7 @@ public class YandexSpellerCheckTextsTests {
 
     }
 
+    //todo 7/8/9 тесты можно объедить с помощью @dataprovider
     @Test
     //7 - verify that CheckTexts can ignore URLs
     public void checkUrlsAreEvoided() {
