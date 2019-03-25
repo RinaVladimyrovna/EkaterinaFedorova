@@ -1,7 +1,5 @@
 package hws.hw10.entities;
 
-import cucumber.api.java.uz.Бирок;
-
 public enum ApplicableOptionValues {
 
     ENGLISH("en"),

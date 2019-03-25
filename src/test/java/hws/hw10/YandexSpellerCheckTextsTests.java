@@ -8,7 +8,6 @@ import static hws.hw10.entities.MethodConstants.LANGUAGE;
 import static hws.hw10.entities.MethodConstants.OPTIONS;
 import static hws.hw10.entities.MethodConstants.TEXT;
 
-import hws.hw10.entities.ApplicableOptionValues;
 import hws.hw10.entities.SpellerReceivedResponse;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -20,7 +19,7 @@ public class YandexSpellerCheckTextsTests {
 
     @DataProvider
     private Object[][] verificationTextsProvider() {
-        return new Object[][] {
+        return new Object[][]{
                 {"Check URLs ignoring", "Have you heard about https://tech.yandex.ru/speller/doc/dg/reference/speller-options-docpage/?"},
                 {"Check e-mails ignoring", "Please, send it to mozilla@rambler.com"},
                 {"Check file names ignoring", "I cannot find Response.xml or response.xlsx."}
@@ -130,7 +129,7 @@ public class YandexSpellerCheckTextsTests {
     //testCheck is not used anywhere but test case name part in idea for now. But in the future it can be used
     //in logs or somewhere else
     @Test(description = "7-9 - verify that CheckTexts can ignore URLs, e-mails and file names respectively",
-    dataProvider = "verificationTextsProvider")
+            dataProvider = "verificationTextsProvider")
     public void checkUrlsAreEvoided(String testCheck, String testText) {
 
         List<SpellerReceivedResponse> response = YandexSpellerCheckTextsApi.getSpellerAnswers(
